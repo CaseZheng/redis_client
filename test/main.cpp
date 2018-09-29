@@ -10,8 +10,7 @@
 
 int main(int argc, char **argv)
 {
-    std::string strHost = "10.10.252.15";
-    //std::string strHost = "127.0.0.1";
+    std::string strHost = "127.0.0.1";
 
     while (1)
     {

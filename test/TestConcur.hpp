@@ -2,6 +2,7 @@
 #define TEST_CONCUR_H
 
 #include "TestClient.hpp"
+#include "boost/thread.hpp"
 
 class CTestConcur : public CTestClient
 {
@@ -16,7 +17,7 @@ private:
 
 private:
     bool m_bExit;
-    std::mutex m_mutex;
+    boost::mutex m_mutex;
 };
 
 #endif

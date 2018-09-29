@@ -27,3 +27,7 @@
 *.exe
 *.out
 *.app
+
+cscope.files
+tags
+test/client_debug

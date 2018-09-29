@@ -1,4 +1,6 @@
 #include "TestConcur.hpp"
+#include "boost/chrono.hpp"
+#include "boost/bind.hpp"
 
 #define NUM_DEF 150
 
@@ -23,12 +25,12 @@ bool CTestConcur::StartTest(const std::string &strHost)
     m_bExit = false;
     const int nGetTrdNum = 20;
     const int nSetTrdNum = 20;
-    std::thread *pthreadGet[nGetTrdNum] = {nullptr};
-    std::thread *pthreadSet[nSetTrdNum] = {nullptr};
+    boost::thread *pthreadGet[nGetTrdNum] = {nullptr};
+    boost::thread *pthreadSet[nSetTrdNum] = {nullptr};
     for (int i = 0; i < nGetTrdNum; ++i)
-        pthreadGet[i] = new std::thread(std::bind(&CTestConcur::Test_Get, this));
+        pthreadGet[i] = new boost::thread(boost::bind(&CTestConcur::Test_Get, this));
     for (int i = 0; i < nSetTrdNum; ++i)
-        pthreadSet[i] = new std::thread(std::bind(&CTestConcur::Test_Set, this));
+        pthreadSet[i] = new boost::thread(boost::bind(&CTestConcur::Test_Set, this));
 
     for (int i = 0; i < nGetTrdNum; ++i)
     {
@@ -58,7 +60,7 @@ void CTestConcur::Test_GetS()
             else
                 std::cout << "Get Failed: " << time(nullptr) << std::endl;
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        boost::this_thread::sleep_for(boost::chrono::milliseconds(10));
     }
 }
 
@@ -99,7 +101,7 @@ void CTestConcur::Test_Get()
             m_mutex.unlock();
             //m_bExit = true;
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        boost::this_thread::sleep_for(boost::chrono::milliseconds(10));
         if (nIndex > 10)
             nIndex = 1;
     }
@@ -143,7 +145,7 @@ void CTestConcur::Test_Set()
             m_mutex.unlock();
             //m_bExit = true;
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        boost::this_thread::sleep_for(boost::chrono::milliseconds(1000));
         if (nIndex > 10)
             nIndex = 1;
     }
