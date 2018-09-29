@@ -1,3 +1,8 @@
+# 简介
+修改原代码支持C++ 98
+
+依赖于hiredis和boost库
+
 # Description
 
 - Only two files included. One hpp file and one cpp file.

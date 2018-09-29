@@ -24,7 +24,7 @@ DEPFLAGS = -MMD
 
 LIBFLAGS =  rcs
 
-ALL_INCLUDE = . ./common /usr/local/mysql/include
+ALL_INCLUDE = . 
 
 ifeq ($(shell uname), Darwin)
 	ALL_LIB_PATH = ./lib/mac
