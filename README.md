@@ -1,7 +1,13 @@
 # 简介
-修改原代码支持C++ 98
 
-依赖于hiredis和boost库
+## C++98
+1. 支持C++ 98
+2. 依赖hiredis
+3. 依赖boost库
+
+## C++11
+1. 只适用于C++11
+2. 依赖hiredis
 
 # Description
 
@@ -55,6 +61,3 @@ int main()
 ```
 
 You can view the test file if you want to know more using details about this client.
-
-
-
