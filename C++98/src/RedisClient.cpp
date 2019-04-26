@@ -631,6 +631,7 @@ int CRedisCommand::CmdRequest(redisContext *pContext)
         memcpy(tmpBuf, m_pszArgs[i], m_pnArgsLen[i]);
         ssCmd << tmpBuf << " ";
     }
+    delete [] tmpBuf;
     DEBUG(ssCmd.str());
     return m_pReply ? RC_SUCCESS : RC_RQST_ERR;
 }
